@@ -8,33 +8,36 @@ public class InputController {
     public static void handleControls() {
         if(Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
             Vector2 clickPos = new Vector2(Gdx.input.getX() - 32, (Gdx.graphics.getHeight() - Gdx.input.getY()) - 32);
-
-            switch(TDGame.selectedtower) {
-                case 0: // machine gunner
-                    if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
-                        TDGame.toDraw.add(new MachinegunTower(clickPos));
-                        TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
-                    }
-                    break;
-                case 1: // rocket launcher
-                    if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
-                        TDGame.toDraw.add(new RocketTower(clickPos));
-                        TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
-                    }
-                    break;
-                case 2: // flak cannon
-                    if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
-                        TDGame.toDraw.add(new FlakTower(clickPos, TDGame.toDestroy));
-                        TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
-                    }
-                    break;
-                case 3: // sniper tower
-                    if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
-                        TDGame.toDraw.add(new SniperTower(clickPos));
-                        TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
-                    }
-                    break;
-                default:
+            if (TDGame.startButton.sprite.getBoundingRectangle().contains(clickPos)) {
+                UIRender.exitMenu();
+            } else {
+                switch (TDGame.selectedtower) {
+                    case 0: // machine gunner
+                        if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
+                            TDGame.toDraw.add(new MachinegunTower(clickPos));
+                            TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
+                        }
+                        break;
+                    case 1: // rocket launcher
+                        if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
+                            TDGame.toDraw.add(new RocketTower(clickPos));
+                            TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
+                        }
+                        break;
+                    case 2: // flak cannon
+                        if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
+                            TDGame.toDraw.add(new FlakTower(clickPos, TDGame.toDestroy));
+                            TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
+                        }
+                        break;
+                    case 3: // sniper tower
+                        if (TDGame.money >= TDGame.towerprices[TDGame.selectedtower]) {
+                            TDGame.toDraw.add(new SniperTower(clickPos));
+                            TDGame.money -= TDGame.towerprices[TDGame.selectedtower];
+                        }
+                        break;
+                    default:
+                }
             }
         }
 
