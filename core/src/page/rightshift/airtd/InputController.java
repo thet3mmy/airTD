@@ -8,7 +8,7 @@ public class InputController {
     public static void handleControls() {
         if(Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
             Vector2 clickPos = new Vector2(Gdx.input.getX() - 32, (Gdx.graphics.getHeight() - Gdx.input.getY()) - 32);
-            if (TDGame.startButton.sprite.getBoundingRectangle().contains(clickPos)) {
+            if (UIRender.startButton.sprite.getBoundingRectangle().contains(clickPos)) {
                 UIRender.exitMenu();
             } else {
                 switch (TDGame.selectedtower) {
